@@ -666,22 +666,9 @@ export const MemeProView: FC = ({ }) => {
   //TEXT RELATED
   const [upperMsg, setUpperMsg] = useState('')
   const [lowerMsg, setLowerMsg] = useState('')
-  const [isGenerated, setIsGenerated] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
 
   const [upperTextSize, setUpperTextSize] = useState(3)
   const [lowerTextSize, setLowerTextSize] = useState(3)
-
-  //Generate the design of the NFT message
-  const generateImg = async () => {
-    const canvas = await html2canvas(document.getElementById('canvas')!, {
-      scale: 2
-    });
-    const img = canvas.toDataURL('image/png');
-    return img;
-  };
 
   const saveImgDesktop = async () => {
     const canvas = await html2canvas(document.getElementById('canvasDesktop')!);
@@ -690,18 +677,19 @@ export const MemeProView: FC = ({ }) => {
     downloadjs(img, 'download.png', 'image/png');
   };
 
+  const saveImgMobile = async () => {
+    const canvas = await html2canvas(document.getElementById('canvasMobile')!);
+    const img = canvas.toDataURL('image/png');
+
+    downloadjs(img, 'download.png', 'image/png');
+  };
+
   const HandleUpperMsgChange = async (e: any) => {
     setUpperMsg(e.target.value);
-    setIsGenerated(false);
-    setErrorMsg('');
-    setIsSent(false);
   };
 
   const HandleLowerMsgChange = async (e: any) => {
     setLowerMsg(e.target.value);
-    setIsGenerated(false);
-    setErrorMsg('');
-    setIsSent(false);
   };  
 
   return (
@@ -715,7 +703,7 @@ export const MemeProView: FC = ({ }) => {
         </div>
         {/*<ConnectWallet />*/}
         <button className="btn btn-ghost bg-white font-trash uppercase text-black text-xl"
-          onClick={saveImgDesktop}>Download Image
+          onClick={saveImgMobile}>Download Image
         </button>
       </div>
 
