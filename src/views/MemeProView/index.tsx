@@ -1,16 +1,8 @@
 import { FC, useState } from "react"
-import { useWallet, useConnection } from "@solana/wallet-adapter-react"
-
-import { Metaplex, bundlrStorage, walletAdapterIdentity } from "@metaplex-foundation/js"
-import { PublicKey } from "@solana/web3.js"
 import html2canvas from 'html2canvas'
 import downloadjs from 'downloadjs'
-import { ConnectWallet } from "components"
 
 export const MemeProView: FC = ({ }) => {
-  const { publicKey } = useWallet();
-  const { connection } = useConnection();
-  const wallet = useWallet();
 
   //MemeGenerator related
   const [rcpage, setRudeCansPage] = useState(1)
@@ -682,10 +674,6 @@ export const MemeProView: FC = ({ }) => {
   const [upperTextSize, setUpperTextSize] = useState(3)
   const [lowerTextSize, setLowerTextSize] = useState(3)
 
-  const metaplex = Metaplex.make(connection)
-    .use(walletAdapterIdentity(wallet))
-    .use(bundlrStorage());
-
   //Generate the design of the NFT message
   const generateImg = async () => {
     const canvas = await html2canvas(document.getElementById('canvas')!, {
@@ -693,13 +681,6 @@ export const MemeProView: FC = ({ }) => {
     });
     const img = canvas.toDataURL('image/png');
     return img;
-  };
-
-  const saveImgMobile = async () => {
-    const canvas = await html2canvas(document.getElementById('canvasMobile')!);
-    const img = canvas.toDataURL('image/png');
-
-    downloadjs(img, 'download.png', 'image/png');
   };
 
   const saveImgDesktop = async () => {
@@ -721,48 +702,7 @@ export const MemeProView: FC = ({ }) => {
     setIsGenerated(false);
     setErrorMsg('');
     setIsSent(false);
-  };
-
-  const CreateAndSendNFT = async () => {
-    try {
-      setSending(true)
-      const image = await generateImg();
-      const _name = "SolJunksNFT BashMail"
-      const description = `PNSQRT`;
-      const { uri } = await metaplex.nfts().uploadMetadata({
-        name: _name,
-        description: description,
-        image: image,
-        external_url: "https://soljunks.io/"
-      });
-      if (uri) {
-        const { nft } = await metaplex.nfts().create({
-          name: _name,
-          uri: uri,
-          sellerFeeBasisPoints: 0,
-          tokenOwner: new PublicKey(wallet),
-        });
-
-        if (nft) {
-          setSending(false);
-          setIsSent(true);
-          setIsGenerated(false);
-        };
-      };
-    }
-
-    catch (errorMsg) {
-      setSending(false);
-      console.log(errorMsg)
-      //const err = (errorMsg as any)?.message;
-      //if (err.includes('could not find mint')) {
-      //  setErrorMsg('The mint address seems to be wrong, verify it');
-      //}
-      //else if (err.includes('Invalid name account provided')) {
-      //  setErrorMsg('This solana domain name does not exist')
-      //}
-    }
-  }
+  };  
 
   return (
     <div className="font-trash">
