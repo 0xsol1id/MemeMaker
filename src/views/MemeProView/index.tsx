@@ -670,15 +670,8 @@ export const MemeProView: FC = ({ }) => {
   const [upperTextSize, setUpperTextSize] = useState(3)
   const [lowerTextSize, setLowerTextSize] = useState(3)
 
-  const saveImgDesktop = async () => {
-    const canvas = await html2canvas(document.getElementById('canvasDesktop')!);
-    const img = canvas.toDataURL('image/png');
-
-    downloadjs(img, 'download.png', 'image/png');
-  };
-
-  const saveImgMobile = async () => {
-    const canvas = await html2canvas(document.getElementById('canvasMobile')!);
+  const saveImg = async (canvasName: string) => {
+    const canvas = await html2canvas(document.getElementById(canvasName)!);
     const img = canvas.toDataURL('image/png');
 
     downloadjs(img, 'download.png', 'image/png');
@@ -702,8 +695,11 @@ export const MemeProView: FC = ({ }) => {
           <img src="./logo_1.png" alt="logo" className="w-5/6" />
         </div>
         {/*<ConnectWallet />*/}
-        <button className="btn btn-ghost bg-white font-trash uppercase text-black text-xl"
-          onClick={saveImgMobile}>Download Image
+        <button className="btn btn-ghost bg-white font-trash uppercase text-black text-xl hidden lg:block"
+          onClick={() => saveImg('canvasDesktop')}>Download Image
+        </button>
+        <button className="btn btn-ghost bg-white font-trash uppercase text-black lg:hidden block"
+          onClick={() => saveImg('canvasMobile')}>Download Image
         </button>
       </div>
 
