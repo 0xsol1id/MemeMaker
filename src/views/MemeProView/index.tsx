@@ -1,6 +1,7 @@
 import { FC, useState } from "react"
 import html2canvas from 'html2canvas'
 import downloadjs from 'downloadjs'
+import { Footer } from "../footer";
 
 export const MemeProView: FC = ({ }) => {
 
@@ -1577,7 +1578,8 @@ export const MemeProView: FC = ({ }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div>      
+      <div className="hidden lg:block"><Footer /></div>
     </div>
   );
 };
