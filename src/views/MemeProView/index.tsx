@@ -132,7 +132,7 @@ export const MemeProView: FC = ({ }) => {
   const mouth1_left = './gen2_layer/mouth_left/none.png';
   const mouth2_left = './gen2_layer/mouth_left/blunt.png';
   const mouth3_left = './gen2_layer/mouth_left/cigarette.png';
-  const mouth4_left = './gen2_layer/mouth_left/goldegrillz.png';
+  const mouth4_left = './gen2_layer/mouth_left/goldengrillz.png';
   const mouth5_left = './gen2_layer/mouth_left/metaspliff.png';
   const mouth6_left = './gen2_layer/mouth_left/opened.png';
   const mouth7_left = './gen2_layer/mouth_left/sad.png';
@@ -691,8 +691,9 @@ export const MemeProView: FC = ({ }) => {
       {/*HEADER------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
       <div className="navbar sticky top-0 z-50 text-neutral-content flex justify-between bg-base-200">
+          <img src="./11pxl.png" alt="logo" className="h-12" />
         <div>
-          <img src="./logo_1.png" alt="logo" className="w-5/6" />
+          <img src="./logo_1.png" alt="logo" className="h-16" />
         </div>
         {/*<ConnectWallet />*/}
         <button className="btn btn-ghost bg-white font-trash uppercase text-black text-xl hidden lg:block"
