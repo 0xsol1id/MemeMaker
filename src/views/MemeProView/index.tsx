@@ -692,7 +692,7 @@ export const MemeProView: FC = ({ }) => {
       {/*HEADER------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
       <div className="navbar sticky top-0 z-50 text-neutral-content flex justify-between bg-base-200">
-          <img src="./11pxl.png" alt="logo" className="h-12" />
+          <a href="https://www.11pxl.com" target="_blank"><img src="./11pxl.png" alt="logo" className="h-12" /></a>
         <div>
           <img src="./logo_1.png" alt="logo" className="h-16" />
         </div>
