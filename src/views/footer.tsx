@@ -12,7 +12,7 @@ export const Footer: React.FC = ({ }) => {
                 <h1 className="font-trash mr-3 mt-1 text-sm uppercase">v0.1_beta</h1>
                 <div className="flex gap-5 mr-3 mt-1">
                       <a href="https://discord.gg/PRaDjQA9AZ" target="_blank"><DiscordLogo /></a>
-                      <a href="https://twitter.com/soljunksNFT" target="_blank"><TwitterLogo /></a>
+                      <a href="https://twitter.com/11pxl" target="_blank"><TwitterLogo /></a>
                       <a href="https://github.com/0xsol1id" target="_blank"><GithubLogo /></a>
                       <a href="http://mintgame.soljunks.io/" target="_blank"><img src="./button/game.png" className="w-10" /></a>
                 </div>
