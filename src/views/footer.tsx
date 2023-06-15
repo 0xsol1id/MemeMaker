@@ -14,7 +14,7 @@ export const Footer: React.FC = ({ }) => {
                       <a href="https://discord.gg/PRaDjQA9AZ" target="_blank"><DiscordLogo /></a>
                       <a href="https://twitter.com/11pxl" target="_blank"><TwitterLogo /></a>
                       <a href="https://github.com/0xsol1id" target="_blank"><GithubLogo /></a>
-                      <a href="http://mintgame.soljunks.io/" target="_blank"><img src="./button/game.png" className="w-10" /></a>
+                      <a href="http://mintgame.11pxl.io/" target="_blank"><img src="./button/game.png" className="w-10" /></a>
                 </div>
             </div>
         </div>
